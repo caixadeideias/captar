@@ -5,6 +5,7 @@ gem 'mongoid', '~> 3.0.0'
 
 group :test do
   gem 'factory_girl'
+  gem 'turn'
 end
 
 # Bundle edge Rails instead:
