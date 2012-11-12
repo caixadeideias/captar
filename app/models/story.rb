@@ -6,4 +6,5 @@ class Story
   field :value, type: Integer
 
   validates :points, inclusion: [1, 2, 3, 5, 8, 13, 20]
+  validates :value, inclusion: [1, 2, 3]
 end
