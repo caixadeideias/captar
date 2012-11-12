@@ -3,8 +3,8 @@ class Story
 
   field :title, type: String
   field :points, type: Integer
-  field :value, type: Integer
+  field :importance, type: Integer
 
   validates :points, inclusion: [1, 2, 3, 5, 8, 13, 20]
-  validates :value, inclusion: [1, 2, 3]
+  validates :importance, inclusion: [1, 2, 3]
 end

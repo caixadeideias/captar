@@ -4,7 +4,7 @@
   <tr>
     <th>Title</th>
     <th>Points</th>
-    <th>Value</th>
+    <th>Importance</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= story.title %></td>
     <td><%= story.points %></td>
-    <td><%= story.value %></td>
+    <td><%= story.importance %></td>
     <td><%= link_to 'Show', story %></td>
     <td><%= link_to 'Edit', edit_story_path(story) %></td>
     <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
