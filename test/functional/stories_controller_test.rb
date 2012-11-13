@@ -18,7 +18,7 @@ class StoriesControllerTest < ActionController::TestCase
 
   test "should create story" do
     assert_difference('Story.count') do
-      post :create, story: { points: @story.points, title: @story.title, value: @story.value }
+      post :create, story: { points: @story.points, title: @story.title, importance: @story.importance }
     end
 
     assert_redirected_to story_path(assigns(:story))
@@ -35,7 +35,7 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test "should update story" do
-    put :update, id: @story, story: { points: @story.points, title: @story.title, value: @story.value }
+    put :update, id: @story, story: { points: @story.points, title: @story.title, importance: @story.importance }
     assert_redirected_to story_path(assigns(:story))
   end
 
