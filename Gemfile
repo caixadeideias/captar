@@ -3,9 +3,14 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'mongoid', '~> 3.0.0'
 
+group :development, :test do
+  gem 'pry'
+end
+
 group :test do
   gem 'factory_girl'
   gem 'turn'
+  gem 'database_cleaner'
 end
 
 # Bundle edge Rails instead:
