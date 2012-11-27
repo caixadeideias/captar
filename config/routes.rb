@@ -1,5 +1,10 @@
 Captar::Application.routes.draw do
-  resources :stories
+  resources :stories do
+    member do
+      put 'want'
+      put 'dont_want'
+    end
+  end
 
   root to: 'stories#index'
 

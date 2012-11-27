@@ -1,0 +1,34 @@
+.row
+  .span6
+    h1 Funcionalidades que ficam de fora
+    table.table
+      tr
+        th Descrição
+        th
+        th
+        th
+      - @unwanted_stories.each do |story|
+        tr
+          td = story.to_s
+          td = link_to 'Quero essa', want_story_path(story), method: :put, class: 'btn btn-success'
+          td = link_to 'Ver mais', story, class: 'btn btn-warning'
+          td = link_to 'Editar', edit_story_path(story), class: 'btn'
+          td = link_to 'Deletar', story, method: :delete, data: { confirm: 'Tem certeza?' }
+    br
+    = link_to 'Criar funcionalidade', new_story_path
+
+  .span6
+    h1 Funcionalidades que serão feitas
+    table.table
+      tr
+        th Descrição
+        th
+        th
+        th
+      - @wanted_stories.each do |story|
+        tr
+          td = story.to_s
+          td = link_to 'Quero essa', want_story_path(story), method: :put, class: 'btn btn-success'
+          td = link_to 'Ver mais', story, class: 'btn btn-warning'
+          td = link_to 'Editar', edit_story_path(story), class: 'btn'
+          td = link_to 'Deletar', story, method: :delete, data: { confirm: 'Tem certeza?' }

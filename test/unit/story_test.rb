@@ -1,7 +1,14 @@
+# encoding: UTF-8
 require 'test_helper'
 
 class StoryTest < ActiveSupport::TestCase
-  #points validation
+  test 'should validate presence of title' do
+    subject = FactoryGirl.build(:story, title: nil)
+    assert subject.invalid? && subject.errors[:title].present?,
+      'should require a title'
+  end
+
+  # points validation
   test 'should accept the scrum scale numbers'do
     story = FactoryGirl.build(:story)
 
@@ -71,6 +78,10 @@ class StoryTest < ActiveSupport::TestCase
       'should not accept any number that is not 1, 2 or 3'
   end
 
+  test 'should set new stories as unwanted' do
+    refute Story.new.wanted?
+  end
+
   # scopes
 
   test 'ordered scope should keep stories with lower points first' do
@@ -87,6 +98,28 @@ class StoryTest < ActiveSupport::TestCase
     assert_equal [first, second, third], Story.ordered
   end
 
+  test 'wanted scope should not keep unwanted stories' do
+    FactoryGirl.create(:story, wanted: false)
+    assert Story.wanted.empty?, 'should not include unwanted'
+  end
+
+  test 'wanted scope should keep wanted stories' do
+    FactoryGirl.create(:story, wanted: true)
+    assert Story.wanted.present?, 'should include wanted'
+  end
+
+  test 'unwanted scope should not keep wanted stories' do
+    FactoryGirl.create(:story, wanted: true)
+    assert Story.unwanted.empty?, 'should not include wanted'
+  end
+
+  test 'unwanted scope should keep unwanted stories' do
+    FactoryGirl.create(:story, wanted: false)
+    assert Story.unwanted.present?, 'should include unwanted'
+  end
+
+  # instance methods
+
   test 'weight method returns the average of points and importance' do
     subject = FactoryGirl.create(:story, importance: 2, points: 1)
     assert_equal 1.5, subject.weight
@@ -97,5 +130,21 @@ class StoryTest < ActiveSupport::TestCase
     assert_raise(Exception) do
       subject.weight
     end
+  end
+
+  test 'string version should concatenate points, importance and title' do
+    subject = FactoryGirl.build(:story, title: 'Bla foo', importance: 1, points: 5)
+    assert_equal '(5 pontos, importância 1) Bla foo', subject.to_s
+  end
+
+  test 'string version should show when story is incomplete' do
+    subject = FactoryGirl.build(:story, title: nil, importance: 1, points: 5)
+    assert_equal '- incompleta -', subject.to_s
+  end
+
+  test 'want! method should update want attribute to true' do
+    subject = FactoryGirl.build(:story, wanted: false)
+    subject.want!
+    assert subject.reload.wanted?
   end
 end

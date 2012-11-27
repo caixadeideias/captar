@@ -1,13 +1,10 @@
 class StoriesController < ApplicationController
-  # GET /stories
-  # GET /stories.json
-  def index
-    @stories = Story.all
+  respond_to :html
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stories }
-    end
+  # GET /stories
+  def index
+    @unwanted_stories = Story.unwanted
+    @wanted_stories   = Story.wanted
   end
 
   # GET /stories/1
@@ -79,5 +76,11 @@ class StoriesController < ApplicationController
       format.html { redirect_to stories_url }
       format.json { head :no_content }
     end
+  end
+
+  def want
+    story = Story.find(params[:id])
+    story.want!
+    redirect_to stories_path
   end
 end
