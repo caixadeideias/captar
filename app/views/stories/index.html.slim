@@ -1,9 +1,14 @@
+- content_for(:navbar) do
+  = link_to 'Adicionar funcionalidade', new_story_path, class: 'btn'
+  = link_to 'Feitoria!', '#', class: 'btn btn-success'
+
 .row
   .span6
     h1 Funcionalidades que ficam de fora
     table.table
       tr
         th Descrição
+        th
         th
         th
         th
@@ -14,8 +19,6 @@
           td = link_to 'Ver mais', story, class: 'btn btn-warning'
           td = link_to 'Editar', edit_story_path(story), class: 'btn'
           td = link_to 'Deletar', story, method: :delete, data: { confirm: 'Tem certeza?' }
-    br
-    = link_to 'Criar funcionalidade', new_story_path
 
   .span6
     h1 Funcionalidades que serão feitas
