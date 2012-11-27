@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
-class Test::Unit::TestCase
+class MiniTest::Unit::TestCase
   def teardown
     DatabaseCleaner.clean
   end

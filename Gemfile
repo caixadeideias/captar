@@ -8,6 +8,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'minitest'
   gem 'factory_girl'
   gem 'turn'
   gem 'database_cleaner'
@@ -23,6 +24,9 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'less-rails' # Sprockets
+  gem 'twitter-bootstrap-rails'
+  gem 'slim-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
