@@ -20,7 +20,7 @@ class Story
     where(wanted: true).ordered
   end
 
-  def self.unwanted
+  def self.despised
     where(wanted: false).ordered
   end
 
@@ -31,6 +31,11 @@ class Story
 
   def want!
     self.wanted = true
+    save
+  end
+
+  def despise!
+    self.wanted = false
     save
   end
 

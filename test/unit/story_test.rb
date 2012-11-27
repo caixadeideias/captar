@@ -98,7 +98,7 @@ class StoryTest < ActiveSupport::TestCase
     assert_equal [first, second, third], Story.ordered
   end
 
-  test 'wanted scope should not keep unwanted stories' do
+  test 'wanted scope should not keep despised stories' do
     FactoryGirl.create(:story, wanted: false)
     assert Story.wanted.empty?, 'should not include unwanted'
   end
@@ -108,14 +108,14 @@ class StoryTest < ActiveSupport::TestCase
     assert Story.wanted.present?, 'should include wanted'
   end
 
-  test 'unwanted scope should not keep wanted stories' do
+  test 'despised scope should not keep wanted stories' do
     FactoryGirl.create(:story, wanted: true)
-    assert Story.unwanted.empty?, 'should not include wanted'
+    assert Story.despised.empty?, 'should not include wanted'
   end
 
-  test 'unwanted scope should keep unwanted stories' do
+  test 'despised scope should keep despised stories' do
     FactoryGirl.create(:story, wanted: false)
-    assert Story.unwanted.present?, 'should include unwanted'
+    assert Story.despised.present?, 'should include despised'
   end
 
   # instance methods
@@ -146,5 +146,11 @@ class StoryTest < ActiveSupport::TestCase
     subject = FactoryGirl.build(:story, wanted: false)
     subject.want!
     assert subject.reload.wanted?
+  end
+
+  test 'despise! method should update want attribute to false' do
+    subject = FactoryGirl.build(:story, wanted: true)
+    subject.despise!
+    assert !subject.reload.wanted?
   end
 end

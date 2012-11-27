@@ -1,9 +1,8 @@
 class StoriesController < ApplicationController
-  respond_to :html
 
   # GET /stories
   def index
-    @unwanted_stories = Story.unwanted
+    @despised_stories = Story.despised
     @wanted_stories   = Story.wanted
   end
 
@@ -81,6 +80,12 @@ class StoriesController < ApplicationController
   def want
     story = Story.find(params[:id])
     story.want!
+    redirect_to stories_path
+  end
+
+  def despise
+    story = Story.find(params[:id])
+    story.despise!
     redirect_to stories_path
   end
 end

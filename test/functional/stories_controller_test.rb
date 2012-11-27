@@ -10,11 +10,11 @@ class StoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get index with unwanted stories" do
+  test "should get index with despised stories" do
     expected = [FactoryGirl.create(:story)]
-    Story.stubs(:unwanted).returns(expected)
+    Story.stubs(:despised).returns(expected)
     get :index
-    assert_equal expected, assigns(:unwanted_stories)
+    assert_equal expected, assigns(:despised_stories)
   end
 
   test "should get index with wanted stories" do
@@ -61,8 +61,12 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test "should set stories as wanted" do
-    @story.update_attributes(wanted: false)
+    Story.any_instance.expects(:want!)
     put :want, id: @story
-    assert @story.reload.wanted?
+  end
+
+  test "should set stories as despised" do
+    Story.any_instance.expects(:despise!)
+    put :despise, id: @story
   end
 end

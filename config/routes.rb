@@ -2,7 +2,7 @@ Captar::Application.routes.draw do
   resources :stories do
     member do
       put 'want'
-      put 'dont_want'
+      put 'despise'
     end
   end
 
