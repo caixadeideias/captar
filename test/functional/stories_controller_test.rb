@@ -11,13 +11,6 @@ class StoriesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:stories)
   end
 
-  test "should get index with ordered stories" do
-    expected = [FactoryGirl.create(:story)]
-    Story.stubs(:ordered).returns(expected)
-    get :index
-    assert_equal expected, assigns(:stories)
-  end
-
   test "should get new" do
     get :new
     assert_response :success

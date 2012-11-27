@@ -8,11 +8,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'minitest'
   gem 'factory_girl'
   gem 'turn'
   gem 'database_cleaner'
-  gem 'mocha', require: false
 end
 
 # Bundle edge Rails instead:
