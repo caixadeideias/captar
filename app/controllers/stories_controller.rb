@@ -1,13 +1,11 @@
 class StoriesController < ApplicationController
-  # GET /stories
-  # GET /stories.json
-  def index
-    @stories = Story.all
+  respond_to :html
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stories }
-    end
+  # GET /stories
+  def index
+    @stories = Story.ordered
+
+    respond_with @stories
   end
 
   # GET /stories/1
