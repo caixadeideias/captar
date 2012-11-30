@@ -41,9 +41,19 @@ class Story
 
   def to_s
     if valid?
-      "(#{points} pontos, importância #{importance}) #{title}"
+      "(#{points} pontos, #{importance_as_string}) #{title}"
     else
       '- incompleta -'
+    end
+  end
+
+  private
+
+  def importance_as_string
+    case importance
+    when 1 then 'alta'
+    when 2 then 'média'
+    when 3 then 'baixa'
     end
   end
 end

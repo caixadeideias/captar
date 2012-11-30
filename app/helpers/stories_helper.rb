@@ -1,5 +1,5 @@
 module StoriesHelper
-  def story
-    StoriesExhibit.new
+  def story(story = @story)
+    StoriesExhibit.new(story)
   end
 end

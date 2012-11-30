@@ -1,5 +1,5 @@
 - content_for(:navbar) do
-  = story.remaining_points(@wanted_stories)
+  = StoriesExhibit.remaining_points(@wanted_stories)
   = link_to 'Adicionar funcionalidade', new_story_path, class: 'btn'
   = link_to 'Feitoria!', '#', class: 'btn btn-success'
 
@@ -15,9 +15,8 @@
         th
       - @despised_stories.each do |story|
         tr
-          td = story.to_s
+          td = link_to story.to_s, story
           td = link_to 'Quero essa', want_story_path(story), method: :put, class: 'btn btn-mini btn-success'
-          td = link_to 'Ver mais', story, class: 'btn btn-mini btn-warning'
           td = link_to 'Editar', edit_story_path(story), class: 'btn btn-mini'
           td = link_to 'Deletar', story, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'
 
@@ -30,10 +29,10 @@
         th
         th
         th
-      - @wanted_stories.each do |story|
+      - @wanted_stories.each do |s|
+        - resource = story(s)
         tr
-          td = story.to_s
-          td = link_to 'Não quero mais', despise_story_path(story), method: :put, class: 'btn btn-mini btn-danger'
-          td = link_to 'Ver mais', story, class: 'btn btn-mini btn-warning'
-          td = link_to 'Editar', edit_story_path(story), class: 'btn btn-mini'
-          td = link_to 'Deletar', story, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'
+          td = link_to resource.to_s, resource
+          td = link_to 'Não quero mais', despise_story_path(resource), method: :put, class: 'btn btn-mini btn-danger'
+          td = link_to 'Editar', edit_story_path(resource), class: 'btn btn-mini'
+          td = link_to 'Deletar', resource, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'

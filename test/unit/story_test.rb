@@ -9,6 +9,7 @@ class StoryTest < ActiveSupport::TestCase
   end
 
   # points validation
+
   test 'should accept the scrum scale numbers'do
     story = FactoryGirl.build(:story)
 
@@ -53,7 +54,8 @@ class StoryTest < ActiveSupport::TestCase
       'should not accept greater than 20'
   end
 
-  #importance validation
+  # importance validation
+
   test 'should accept high priority importance' do
     story = FactoryGirl.build(:story, importance: 1)
     assert story.valid? && story.errors[:importance].empty?,
@@ -134,7 +136,11 @@ class StoryTest < ActiveSupport::TestCase
 
   test 'string version should concatenate points, importance and title' do
     subject = FactoryGirl.build(:story, title: 'Bla foo', importance: 1, points: 5)
-    assert_equal '(5 pontos, importância 1) Bla foo', subject.to_s
+    assert_equal '(5 pontos, alta) Bla foo', subject.to_s
+    subject.importance = 2
+    assert_equal '(5 pontos, média) Bla foo', subject.to_s
+    subject.importance = 3
+    assert_equal '(5 pontos, baixa) Bla foo', subject.to_s
   end
 
   test 'string version should show when story is incomplete' do

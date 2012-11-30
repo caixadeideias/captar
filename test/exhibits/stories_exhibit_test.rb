@@ -2,12 +2,10 @@ require_relative '../test_helper'
 
 class StoriesExhibitTest < ActiveSupport::TestCase
   test 'should provide remaing points of a collection of stories' do
-    subject = StoriesExhibit.new
-    assert_equal 'Restando 113 pontos', subject.remaining_points([stub(points: 1), stub(points: 6)])
+    assert_equal 'Restando 113 pontos', StoriesExhibit.remaining_points([stub(points: 1), stub(points: 6)])
   end
 
-  test 'remaing points returns zero for empty story collections' do
-    subject = StoriesExhibit.new
-    assert_equal 'Restando 0 pontos', subject.remaining_points([])
+  test 'remaing points returns configured initial for empty story collections' do
+    assert_equal 'Restando 100 pontos', StoriesExhibit.remaining_points([], 100)
   end
 end
