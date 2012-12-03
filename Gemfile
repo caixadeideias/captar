@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
+gem 'unicorn'
 gem 'rails', '3.2.9'
 gem 'mongoid', '~> 3.0.0'
 
