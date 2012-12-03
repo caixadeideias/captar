@@ -1,5 +1,5 @@
 - content_for(:navbar) do
-  = StoriesExhibit.remaining_points(@wanted_stories)
+  = StoriesExhibit.remaining_points(@wanted_stories, 80)
   = link_to 'Adicionar funcionalidade', new_story_path, class: 'btn'
   = link_to 'Feitoria!', '#', class: 'btn btn-success'
 
