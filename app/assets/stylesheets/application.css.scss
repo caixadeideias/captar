@@ -16,3 +16,9 @@
 h1{
   font-size: 20px;
 }
+
+a.btn-success, a.btn-danger{
+  &, &:visited{
+    color: white;
+  }
+}
