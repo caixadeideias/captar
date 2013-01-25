@@ -2,8 +2,9 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/autorun'
-require 'database_cleaner'
 require 'turn/autorun'
+require 'mocha/setup'
+require 'database_cleaner'
 
 FactoryGirl.find_definitions
 DatabaseCleaner.strategy = :truncation

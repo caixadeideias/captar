@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'unicorn'
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'mongoid', '~> 3.0.0'
 
 group :development, :test do
@@ -10,7 +10,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'minitest'
+  gem 'minitest', require: false
   gem 'factory_girl'
   gem 'turn'
   gem 'database_cleaner'
