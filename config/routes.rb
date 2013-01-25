@@ -1,4 +1,7 @@
 Captar::Application.routes.draw do
+  resources :projects
+
+
   resources :stories do
     member do
       put 'want'

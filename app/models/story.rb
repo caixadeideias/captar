@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 class Story
   include Mongoid::Document
 
@@ -7,6 +6,7 @@ class Story
   field :points, type: Integer
   field :importance, type: Integer
   field :wanted, type: Boolean, default: false
+  embedded_in :project
 
   validates :title, presence: true
   validates :points, inclusion: [1, 2, 3, 5, 8, 13, 20]

@@ -8,6 +8,12 @@ class StoryTest < ActiveSupport::TestCase
       'should require a title'
   end
 
+  test "should be in a project" do
+    subject = FactoryGirl.build(:story)
+    subject.project = FactoryGirl.create(:project)
+    assert_kind_of Project, subject.project
+  end
+
   # points validation
 
   test 'should accept the scrum scale numbers'do
