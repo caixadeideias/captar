@@ -1,7 +1,9 @@
+= link_to 'Voltar ao projeto', project_path(parent)
+
 h1 Editando funcionalidade
 
 = render 'form'
 
-= link_to '+ info', [parent, resource]
-| &nbsp;|&nbsp;
-= link_to 'Voltar', project_stories_path(parent)
+.row
+  = link_to '+ info', [parent, resource], class: 'btn span2'
+  = link_to 'Deletar', [parent, resource], method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger span2'

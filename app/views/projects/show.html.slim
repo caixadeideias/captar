@@ -7,6 +7,5 @@ p
   strong Pontos:
   = @project.points
 
-= link_to 'Editar', edit_project_path(@project)
-'|
-= link_to 'Voltar', projects_path
+.row
+  = link_to 'Editar', edit_project_path(@project), class: 'btn span2'
