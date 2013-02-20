@@ -1,11 +1,10 @@
 Captar::Application.routes.draw do
-  resources :projects
-
-
-  resources :stories do
-    member do
-      put 'want'
-      put 'despise'
+  resources :projects do
+    resources :stories do
+      member do
+        put 'want'
+        put 'despise'
+      end
     end
   end
 

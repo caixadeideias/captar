@@ -5,5 +5,9 @@ class Project
   field :points, type: Integer
   embeds_many :stories
 
+  delegate :despised, to: :stories, prefix: true
+  delegate :ordered, to: :stories, prefix: true
+  delegate :wanted, to: :stories, prefix: true
+
   validates :title, :points, presence: true
 end

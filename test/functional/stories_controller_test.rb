@@ -2,71 +2,75 @@ require 'test_helper'
 
 class StoriesControllerTest < ActionController::TestCase
   setup do
-    @story = FactoryGirl.create(:story)
+    @project = FactoryGirl.create(:project)
+    @project.stories << @story = FactoryGirl.create(:story)
   end
 
   test "should get index" do
-    get :index
+    get :index, project_id: @project.to_param
     assert_response :success
   end
 
-  test "should get index with despised stories" do
+  test "should get index with given project" do
+    get :index, project_id: @project.to_param
+    assert_equal @project, assigns(:project)
+  end
+
+  test "should get index with despised stories from the given project" do
     expected = [FactoryGirl.create(:story)]
-    Story.stubs(:despised).returns(expected)
-    get :index
+    Project.any_instance.stubs(:stories_despised).returns(expected)
+    get :index, project_id: @project.to_param
     assert_equal expected, assigns(:despised_stories)
   end
 
-  test "should get index with wanted stories" do
+  test "should get index with wanted stories from the given project" do
     expected = [FactoryGirl.create(:story)]
-    Story.stubs(:wanted).returns(expected)
-    get :index
+    Project.any_instance.stubs(:stories_wanted).returns(expected)
+    get :index, project_id: @project.to_param
     assert_equal expected, assigns(:wanted_stories)
   end
 
   test "should get new" do
-    get :new
+    get :new, project_id: @project.to_param
     assert_response :success
   end
 
   test "should create story" do
-    assert_difference('Story.count') do
-      post :create, story: { points: @story.points, title: @story.title, importance: @story.importance }
-    end
+    post :create, project_id: @project.to_param, story: { points: @story.points, title: @story.title, importance: @story.importance }
 
-    assert_redirected_to story_path(assigns(:story))
+    assert @project.reload.stories.any?
+    assert_redirected_to project_story_path(assigns(:project), assigns(:story))
   end
 
   test "should show story" do
-    get :show, id: @story
+    get :show, project_id: @project.to_param, id: @story
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @story
+    get :edit, project_id: @project.to_param, id: @story
     assert_response :success
   end
 
   test "should update story" do
-    put :update, id: @story, story: { points: @story.points, title: @story.title, importance: @story.importance }
-    assert_redirected_to story_path(assigns(:story))
+    put :update, project_id: @project.to_param, id: @story, story: { points: @story.points, title: @story.title, importance: @story.importance }
+    assert_redirected_to project_story_path(assigns(:project), assigns(:story))
   end
 
   test "should destroy story" do
-    assert_difference('Story.count', -1) do
-      delete :destroy, id: @story
-    end
+    delete :destroy, project_id: @project.to_param, id: @story
 
-    assert_redirected_to stories_path
+    assert @project.reload.stories.empty?
+    assert_redirected_to project_stories_path(@project)
   end
 
   test "should set stories as wanted" do
     Story.any_instance.expects(:want!)
-    put :want, id: @story
+    put :want, project_id: @project.to_param, id: @story
   end
 
   test "should set stories as despised" do
     Story.any_instance.expects(:despise!)
-    put :despise, id: @story
+    put :despise, project_id: @project.to_param, id: @story
   end
 end

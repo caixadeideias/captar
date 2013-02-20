@@ -1,6 +1,6 @@
 - content_for(:navbar) do
   span#remaining_points = StoriesExhibit.remaining_points(@wanted_stories, 50)
-  = link_to 'Adicionar funcionalidade', new_story_path, class: 'btn'
+  = link_to 'Adicionar funcionalidade', new_project_story_path(parent), class: 'btn'
   = link_to 'Feitoria!', '#', class: 'btn btn-success pull-right'
 
 .row
@@ -15,10 +15,10 @@
         th
       - @despised_stories.each do |story|
         tr
-          td = link_to story.to_s, story
-          td = link_to 'Quero essa', want_story_path(story), method: :put, class: 'btn btn-mini btn-success'
-          td = link_to 'Editar', edit_story_path(story), class: 'btn btn-mini'
-          td = link_to 'Deletar', story, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'
+          td = link_to story.to_s, [parent, story]
+          td = link_to 'Quero essa', want_project_story_path(parent, story), method: :put, class: 'btn btn-mini btn-success'
+          td = link_to 'Editar', edit_project_story_path(parent, story), class: 'btn btn-mini'
+          td = link_to 'Deletar', [parent, story], method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'
 
   .span6
     h1 Funcionalidades que serão feitas
@@ -32,7 +32,7 @@
       - @wanted_stories.each do |s|
         - resource = story(s)
         tr
-          td = link_to resource.to_s, resource
-          td = link_to 'Não quero mais', despise_story_path(resource), method: :put, class: 'btn btn-mini btn-danger'
-          td = link_to 'Editar', edit_story_path(resource), class: 'btn btn-mini'
-          td = link_to 'Deletar', resource, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'
+          td = link_to resource.to_s, [parent, resource]
+          td = link_to 'Não quero mais', despise_project_story_path(parent, resource), method: :put, class: 'btn btn-mini btn-danger'
+          td = link_to 'Editar', edit_project_story_path(parent, resource), class: 'btn btn-mini'
+          td = link_to 'Deletar', [parent, resource], method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-mini'

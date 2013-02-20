@@ -2,19 +2,19 @@
 
 <p>
   <b>Title:</b>
-  <%= @story.title %>
+  <%= resource.title %>
 </p>
 
 <p>
   <b>Points:</b>
-  <%= @story.points %>
+  <%= resource.points %>
 </p>
 
 <p>
   <b>Importance:</b>
-  <%= @story.importance %>
+  <%= resource.importance %>
 </p>
 
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+<%= link_to 'Edit', edit_project_story_path(parent, resource) %> |
+<%= link_to 'Back', project_stories_path(parent) %>
