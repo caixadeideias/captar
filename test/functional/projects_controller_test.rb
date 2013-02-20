@@ -24,11 +24,6 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should show project" do
-    get :show, id: @project
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, id: @project
     assert_response :success

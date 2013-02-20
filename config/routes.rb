@@ -1,6 +1,8 @@
 Captar::Application.routes.draw do
   resources :projects do
-    resources :stories do
+    get '/' => 'stories#index'
+
+    resources :stories, except: [:index] do
       member do
         put 'want'
         put 'despise'
