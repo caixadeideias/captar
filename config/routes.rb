@@ -1,7 +1,5 @@
 Captar::Application.routes.draw do
-  resources :projects do
-    get '/' => 'stories#index'
-
+  resources :projects, except: [:show] do
     resources :stories, except: [:index] do
       member do
         put 'want'
@@ -9,8 +7,9 @@ Captar::Application.routes.draw do
       end
     end
   end
+  get '/projects/:project_id' => 'stories#index'
 
-  root to: 'stories#index'
+  root to: 'high_voltage/pages#show', id: 'home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

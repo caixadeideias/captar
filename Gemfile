@@ -8,6 +8,8 @@ gem 'mongoid', '~> 3.0.0'
 # I18n
 gem 'rails-i18n'
 
+gem 'high_voltage'
+
 group :development, :test do
   gem 'pry'
 end
