@@ -1,0 +1,14 @@
+p#notice = notice
+p
+  b Título:
+  = resource.title
+p
+  b Pontos:
+  = resource.points
+p
+  b Importância:
+  = resource.importance
+
+= link_to 'Editar', edit_project_story_path(parent, resource)
+| &nbsp;|&nbsp;
+= link_to 'Voltar', project_stories_path(parent)

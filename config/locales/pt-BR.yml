@@ -1,0 +1,17 @@
+pt-BR:
+  mongoid:
+    models:
+      project:
+        one: Projeto
+        other: Projetos
+      story:
+        one: Funcionalidade
+        other: Funcionalidades
+    attributes:
+      project:
+        title: Nome
+        points: Pontos
+      story:
+        importance: Importância
+        points: Pontos
+        title: Título

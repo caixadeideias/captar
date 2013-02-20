@@ -1,9 +1,9 @@
-h1 Listing projects
+h1 Projetos
 
 table
   tr
-    th Title
-    th Points
+    th Título
+    th Pontos
     th
     th
     th
@@ -12,10 +12,10 @@ table
     tr
       td = project.title
       td = project.points
-      td = link_to 'Show', project
-      td = link_to 'Edit', edit_project_path(project)
-      td = link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+      td = link_to '+ info', project
+      td = link_to 'Editar', edit_project_path(project)
+      td = link_to 'Excluir', project, confirm: 'Tem certeza?', method: :delete
 
 br
 
-= link_to 'New Project', new_project_path
+= link_to 'Novo Projeto', new_project_path
