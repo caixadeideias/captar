@@ -2,6 +2,10 @@
 require 'test_helper'
 
 class StoryTest < ActiveSupport::TestCase
+  def project
+    @project ||= FactoryGirl.create(:project)
+  end
+
   test 'should validate presence of title' do
     subject = FactoryGirl.build(:story, title: nil)
     assert subject.invalid? && subject.errors[:title].present?,
@@ -93,37 +97,37 @@ class StoryTest < ActiveSupport::TestCase
   # scopes
 
   test 'ordered scope should keep stories with lower points first' do
-    first = FactoryGirl.create(:story, importance: 1, points: 1)
-    third = FactoryGirl.create(:story, importance: 1, points: 13)
-    second = FactoryGirl.create(:story, importance: 1, points: 8)
-    assert_equal [first, second, third], Story.ordered
+    project.stories << first = FactoryGirl.create(:story, importance: 1, points: 1)
+    project.stories << third = FactoryGirl.create(:story, importance: 1, points: 13)
+    project.stories << second = FactoryGirl.create(:story, importance: 1, points: 8)
+    assert_equal [first, second, third], project.stories.ordered
   end
 
   test 'ordered scope should keep stories with greater importance first' do
-    third = FactoryGirl.create(:story, importance: 3, points: 1)
-    first = FactoryGirl.create(:story, importance: 1, points: 1)
-    second = FactoryGirl.create(:story, importance: 2, points: 1)
-    assert_equal [first, second, third], Story.ordered
+    project.stories << third = FactoryGirl.create(:story, importance: 3, points: 1)
+    project.stories << first = FactoryGirl.create(:story, importance: 1, points: 1)
+    project.stories << second = FactoryGirl.create(:story, importance: 2, points: 1)
+    assert_equal [first, second, third], project.stories.ordered
   end
 
   test 'wanted scope should not keep despised stories' do
-    FactoryGirl.create(:story, wanted: false)
-    assert Story.wanted.empty?, 'should not include unwanted'
+    project.stories << FactoryGirl.create(:story, wanted: false)
+    assert project.stories.wanted.empty?, 'should not include unwanted'
   end
 
   test 'wanted scope should keep wanted stories' do
-    FactoryGirl.create(:story, wanted: true)
-    assert Story.wanted.present?, 'should include wanted'
+    project.stories << FactoryGirl.create(:story, wanted: true)
+    assert project.stories.wanted.present?, 'should include wanted'
   end
 
   test 'despised scope should not keep wanted stories' do
-    FactoryGirl.create(:story, wanted: true)
-    assert Story.despised.empty?, 'should not include wanted'
+    project.stories << FactoryGirl.create(:story, wanted: true)
+    assert project.stories.despised.empty?, 'should not include wanted'
   end
 
   test 'despised scope should keep despised stories' do
-    FactoryGirl.create(:story, wanted: false)
-    assert Story.despised.present?, 'should include despised'
+    project.stories << FactoryGirl.create(:story, wanted: false)
+    assert project.stories.despised.present?, 'should include despised'
   end
 
   # instance methods
@@ -163,6 +167,6 @@ class StoryTest < ActiveSupport::TestCase
   test 'despise! method should update want attribute to false' do
     subject = FactoryGirl.build(:story, wanted: true)
     subject.despise!
-    assert !subject.reload.wanted?
+    refute subject.reload.wanted?
   end
 end
