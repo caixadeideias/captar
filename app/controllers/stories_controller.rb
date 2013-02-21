@@ -71,7 +71,7 @@ class StoriesController < ApplicationController
     resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to project_stories_url(parent) }
+      format.html { redirect_to parent }
       format.json { head :no_content }
     end
   end
@@ -79,13 +79,13 @@ class StoriesController < ApplicationController
   def want
     story = parent.stories.find(params[:id])
     story.want!
-    redirect_to project_stories_path(parent)
+    redirect_to parent
   end
 
   def despise
     story = parent.stories.find(params[:id])
     story.despise!
-    redirect_to project_stories_path(parent)
+    redirect_to parent
   end
 
   private

@@ -59,9 +59,12 @@ class StoriesControllerTest < ActionController::TestCase
 
   test "should destroy story" do
     delete :destroy, project_id: @project.to_param, id: @story
-
     assert @project.reload.stories.empty?
-    assert_redirected_to project_stories_path(@project)
+  end
+
+  test "should redirect to project's page after destroy a story" do
+    delete :destroy, project_id: @project.to_param, id: @story
+    assert_redirected_to @project
   end
 
   test "should set stories as wanted" do
@@ -69,8 +72,18 @@ class StoriesControllerTest < ActionController::TestCase
     put :want, project_id: @project.to_param, id: @story
   end
 
+  test "should redirect to project's page after want a story" do
+    put :want, project_id: @project.to_param, id: @story
+    assert_redirected_to @project
+  end
+
   test "should set stories as despised" do
     Story.any_instance.expects(:despise!)
     put :despise, project_id: @project.to_param, id: @story
+  end
+
+  test "should redirect to project's page after despise a story" do
+    put :despise, project_id: @project.to_param, id: @story
+    assert_redirected_to @project
   end
 end
