@@ -18,6 +18,6 @@
   .field
     = f.label :importance
     br
-    = f.number_field :importance
+    = f.select :importance, [%w(Alta 1), %w(Intermediária 2), %w(Baixa 3)]
   .actions
     = f.submit nil, class: 'btn btn-success'
