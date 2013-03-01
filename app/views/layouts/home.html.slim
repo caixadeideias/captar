@@ -18,6 +18,8 @@ html lang="en"
     link href="images/favicon.ico" rel="shortcut icon"
 
   body#home
+    = link_to 'https://github.com/caixadeideias/captar' do
+      = image_tag 'https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png', alt: 'Fork me on GitHub', id: 'github-ribbon'
     = yield
 
     = javascript_include_tag "application"
