@@ -14,4 +14,13 @@ class ProjectsHelperTest < ActionView::TestCase
     @project = stub('project', title: nil)
     assert_equal 'Captar', project_title
   end
+
+  test "project_link returns the current project url" do
+    self.stubs(:params).returns(project_id: '123')
+    assert_equal 'http://test.host/projects/123', project_link
+  end
+
+  test "project_link returns root url when no project is defined" do
+    assert_equal root_url, project_link
+  end
 end

@@ -7,7 +7,7 @@ Captar::Application.routes.draw do
       end
     end
   end
-  get '/projects/:project_id' => 'stories#index'
+  get '/projects/:project_id' => 'stories#index', as: 'project'
 
   root to: 'high_voltage/pages#show', id: 'home'
 
