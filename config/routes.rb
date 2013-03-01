@@ -1,5 +1,5 @@
 Captar::Application.routes.draw do
-  resources :projects, except: [:show] do
+  resources :projects, except: [:index, :show] do
     resources :stories, except: [:index] do
       member do
         put 'want'
