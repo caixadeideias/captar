@@ -9,7 +9,7 @@ Captar::Application.routes.draw do
   end
   get '/projects/:project_id' => 'stories#index', as: 'project'
 
-  root to: 'high_voltage/pages#show', id: 'home'
+  root to: 'pages#show', id: 'home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

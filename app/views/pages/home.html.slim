@@ -1,2 +1,14 @@
-.row
-  = link_to 'Criar projeto', new_project_path, class: 'btn span6 offset3'
+section.banner
+  .container
+    .row
+    	.logo
+         = image_tag 'logo.png', size: '203x61'
+    	.hero-unit
+    		h1.text-center Da ideia à funcionalidade
+    		p.text-center O modo mais simples de se organizar uma captação de requisitos
+
+  .cta
+    .container
+      .row
+        p.text-center
+          = link_to 'Crie seu projeto é FREE', new_project_path, class: 'btn btn-large btn-inverse'
