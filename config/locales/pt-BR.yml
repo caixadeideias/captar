@@ -1,4 +1,41 @@
 pt-BR:
+  actions:
+    are_you_sure: 'Você tem certeza?'
+    back: 'Voltar'
+    delete: 'Deletar'
+    edit: 'Editar'
+    new: 'Criar'
+  edit:
+    more_info: '+ info'
+    title: 'Editando %{name}'
+  projects:
+    form:
+      errors:
+        one: 'Um erro impede o projeto de ser salvo:'
+        other: '%{count} erros impedem o projeto de ser salvo:'
+    new:
+      title: 'Novo projeto'
+  stories:
+    back_to_project: 'Voltar ao projeto'
+    form:
+      errors:
+        one: 'Um erro impede a funcionalidade de ser salva:'
+        other: '%{count} erros impedem a funcionalidade de ser salva:'
+    new:
+      title: 'Nova funcionalidade'
+    index:
+      want: 'Quero essa'
+      dont_want: 'Não quero mais'
+  pages:
+    home:
+      pitch: 'O modo mais simples de se organizar uma captação de requisitos.'
+      slogan: 'Da ideia à funcionalidade'
+      start_project: 'Crie seu projeto. É de graça!'
+  stories_exhibits:
+    remaining_points:
+      zero: 'Não restam pontos'
+      one: 'Restando %{count} ponto'
+      other: 'Restando %{count} pontos'
   mongoid:
     models:
       project:

@@ -8,8 +8,10 @@ class Story
   field :wanted, type: Boolean, default: false
   embedded_in :project
 
+  POINTS = [1, 2, 3, 5, 8, 13, 20]
+
   validates :title, presence: true
-  validates :points, inclusion: [1, 2, 3, 5, 8, 13, 20]
+  validates :points, inclusion: POINTS
   validates :importance, inclusion: [1, 2, 3]
 
   def self.ordered(collection = self.all)

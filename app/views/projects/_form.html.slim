@@ -1,7 +1,7 @@
 = form_for @project do |f|
   - if @project.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@project.errors.count, "erro")} impede(m) o projeto de ser salvo:"
+      h2 = t('projects.form.errors', count: @project.errors.count)
       ul
         - @project.errors.full_messages.each do |message|
           li = message
@@ -11,5 +11,5 @@
     = f.text_field :title
   .field
     = f.label :points
-    = f.number_field :points
+    = f.number_field :points, min: 1
   .actions = f.submit nil, class: 'btn btn-success'
