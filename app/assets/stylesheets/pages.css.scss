@@ -53,9 +53,10 @@ body#home{
     line-height: 40px;
     background: white;
     color: #a1c33a;
+    &:hover, &:focus{
+      background: #a1c33a;
+      color: #FFF;
+    }
   }
 
-  a:hover.btn-large {
-    background: #a1c33a;
-  }
 }
