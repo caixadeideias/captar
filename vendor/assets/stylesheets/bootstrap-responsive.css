@@ -948,7 +948,7 @@
   }
   .navbar-fixed-top .navbar-inner,
   .navbar-fixed-bottom .navbar-inner {
-    padding: 5px;
+    padding: 0px 5px;
   }
   .navbar .container {
     width: auto;
