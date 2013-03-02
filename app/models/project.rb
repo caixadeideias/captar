@@ -10,4 +10,5 @@ class Project
   delegate :wanted, to: :stories, prefix: true
 
   validates :title, :points, presence: true
+  validates :points, numericality: { greater_than: 0 }
 end
