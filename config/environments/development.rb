@@ -28,4 +28,7 @@ Captar::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # allow html indentation in development
+  Slim::Engine.set_default_options :pretty => true
 end

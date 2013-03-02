@@ -2,4 +2,56 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  actions:
+    are_you_sure: 'Are you sure?'
+    back: 'Back'
+    delete: 'Delete'
+    edit: 'Edit'
+    new: 'New'
+  edit:
+    more_info: '+ info'
+    title: 'Editing %{name}'
+  projects:
+    form:
+      errors:
+        one: 'An error prevents the project from being saved:'
+        other: '%{count} errors prevents the project from being saved::'
+    new:
+      title: 'New project'
+  stories:
+    back_to_project: 'Back to project'
+    form:
+      errors:
+        one: 'An error prevents the story from being saved:'
+        other: '%{count} errors prevents the story from being saved:'
+    new:
+      title: 'New story'
+    index:
+      want: 'I want this'
+      dont_want: "Don't want more"
+  pages:
+    home:
+      pitch: 'The simplest way to organize a pickup requirements.'
+      slogan: 'From idea to feature'
+      start_project: "Create your project. It's free!"
+  stories_exhibits:
+    remaining_points:
+      zero: 'No points remaining'
+      one: '1 point remaining'
+      other: '%{count} points remaining'
+  mongoid:
+    models:
+      project:
+        one: Project
+        other: Projects
+      story:
+        one: Story
+        other: Stories
+    attributes:
+      project:
+        title: Name
+        points: Points
+      story:
+        importance: Importance
+        points: Points
+        title: Title

@@ -5,8 +5,10 @@
  *= require_tree .
  */
 
-body{
-  padding-top: 50px;
+@media (min-width: 980px){
+  body{
+    padding-top: 50px;
+  }
 }
 
 h1{
