@@ -11,5 +11,5 @@
     = f.text_field :title
   .field
     = f.label :points
-    = f.number_field :points
+    = f.number_field :points, min: 1
   .actions = f.submit nil, class: 'btn btn-success'
