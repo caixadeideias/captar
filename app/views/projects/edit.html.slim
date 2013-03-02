@@ -1,6 +1,6 @@
-h1 Editando projeto
+h1 = t('.title', name: @project.title)
 
 == render 'form'
 
 .row
-  = link_to '+ info', @project, class: 'btn span2'
+  = link_to t('edit.more_info'), @project, class: 'btn span2'

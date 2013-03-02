@@ -1,6 +1,6 @@
 class StoriesExhibit < Exhibit
   def self.remaining_points(story_collection, initial = 120)
-    "Restando #{points(story_collection, initial)} pontos"
+    I18n.translate 'stories_exhibits.remaining_points', count: points(story_collection, initial)
   end
 
   private
