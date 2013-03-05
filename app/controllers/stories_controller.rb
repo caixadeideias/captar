@@ -40,7 +40,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to [parent, @story], notice: 'Story was successfully created.' }
+        format.html { redirect_to [parent], notice: 'Story was successfully created.' }
         format.json { render json: @story, status: :created, location: @story }
       else
         format.html { render action: "new" }
