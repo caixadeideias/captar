@@ -39,7 +39,7 @@ class StoriesControllerTest < ActionController::TestCase
     post :create, project_id: @project.to_param, story: { points: @story.points, title: @story.title, importance: @story.importance }
 
     assert @project.reload.stories.any?
-    assert_redirected_to project_story_path(assigns(:project), assigns(:story))
+    assert_redirected_to project_path(assigns(:project))
   end
 
   test "should show story" do
