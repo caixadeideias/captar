@@ -1,8 +1,8 @@
+= render 'modal'
 - content_for(:navbar) do
   span#remaining_points = StoriesExhibit.remaining_points(@wanted_stories, parent.points)
   = link_to 'Adicionar funcionalidade', new_project_story_path(parent), class: 'btn'
-  = link_to 'Feitoria!', '#', class: 'btn btn-success pull-right'
-
+  = link_to 'Feitoria!', '#doneModal', class: 'btn btn-success pull-right', "data-toggle" => "modal"
 .row
   .span6
     h1 Funcionalidades que ficam de fora
