@@ -1,0 +1,10 @@
+#doneModal.modal.hide.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  .modal-header
+    button.close[type="button" data-dismiss="modal" aria-hidden="true"] &times;
+    h3#myModalLabel Feitoria!
+  .modal-body
+    p Para que outras pessoas tenham acesso as funcionalidades descritas aqui, envie a elas a URL:
+    .well.text-center
+      = request.url
+  .modal-footer
+    button.btn[data-dismiss="modal" aria-hidden="true"] Fechar
