@@ -2,10 +2,11 @@
 class Story
   include Mongoid::Document
 
-  field :title, type: String
-  field :points, type: Integer
-  field :importance, type: Integer
-  field :wanted, type: Boolean, default: false
+  field :title,       type: String
+  field :description, type: String
+  field :points,      type: Integer
+  field :importance,  type: Integer
+  field :wanted,      type: Boolean, default: false
   embedded_in :project
 
   POINTS = [1, 2, 3, 5, 8, 13, 20]

@@ -3,7 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/autorun'
 require 'turn/autorun'
-require 'mocha/setup'
+require 'mocha'
 require 'database_cleaner'
 
 FactoryGirl.find_definitions

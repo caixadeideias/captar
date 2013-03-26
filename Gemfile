@@ -15,11 +15,11 @@ group :development, :test do
 end
 
 group :test do
-  gem 'minitest', require: false
-  gem 'factory_girl'
-  gem 'turn'
   gem 'database_cleaner'
-  gem 'mocha', require: false
+  gem 'factory_girl'
+  gem 'minitest', require: false
+  gem 'mocha', '0.12.10', require: false
+  gem 'turn'
 end
 
 # Bundle edge Rails instead:

@@ -49,6 +49,7 @@ pt-BR:
         title: Nome
         points: Pontos
       story:
+        description: Descrição
         importance: Importância
         points: Pontos
         title: Título
